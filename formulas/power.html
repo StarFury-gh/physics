@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="scripts/power.js"></script>
+    <title>Phyrmularics - формулы тут</title>
+</head>
+<body>
+    <div id="menu">
+        <button id="main-butt">Главная</button>
+        <button id="list-butt">Список формул и законов</button>
+        <button id="about-butt">О сайте</button>
+    </div>
+    <div id="main">
+        Мощность P <input type="text" id="power"> (В СИ - Вт)
+        <select id="power-izm">
+            <option value="mevt">мегаватт(а) (МВт)</option>
+            <option value="kvt">киловатт(a) (кВт)</option>
+            <option value="vt" autofocus>ватт(а) (Вт)</option>
+            <option value="mivt">милливатт(а) (мВт)</option>
+        </select><button id="power_del">Очистить</button><br>
+        Работа A <input type="text" id="work">
+        <select id="work-izm">
+            <option value="mej">мегаджоул(ь, я, ей) (МДж)</option>
+            <option value="kj">килоджоул(ь, я, ей) (кДж)</option>
+            <option value="j" autofocus>джоул(ь, я, ей) (Дж)</option>
+            <option value="mij">миллиджоул(ь, я, ей) (мДж)</option>
+        </select> (В СИ - Дж)<button id="work_del">Очистить</button><br>
+        Время t <input type="text" id="time">
+        <select id="time-izm">
+            <option value="d">день(дня, дней)</option>
+            <option value="h">час(а, ов)</option>
+            <option value="m">минут(а, ы)</option>
+            <option value="s" autofocus>секунд(а, ы) (с)</option>
+        </select>(В СИ - с)<button id="time_del">Очистить</button><br>
+        <button id="results">Посчитать</button>
+    </div>
+</body>
+</html>

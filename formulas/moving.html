@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Phyrmularics - формулы тут</title>
+</head>
+<body>
+    <div id="menu">
+        <button id="main-butt">Главная</button>
+        <button id="list-butt">Список формул и законов</button>
+        <button id="about-butt">О сайте</button>
+    </div>
+    <div id="main">
+        Перемещение s <input type="text" id="moving"> (В СИ - м)
+        <select id="moving-izm">
+            <option value="km">километр(а, ов) (км)</option>
+            <option value="m" autofocus="true">метр(a, ов) (м)</option>
+            <option value="cm">сантиментр(а, ов) (см)</option>
+            <option value="mm">миллиметра(а, ов) (мм)</option>
+        </select><input type="checkbox" id="not-d-s">Не дано<button id="moving_del">Очистить</button><br>
+
+        Начальная скорость V₀ <input type="text" id="speed-0"> (В СИ - м/с) <input type="checkbox" id="not-d-v0"> Не дано
+        <button id="speed0_del">Очистить</button><br>
+
+        Конечная скорость V <input type="text" id="speed"> (В СИ - м/с) <input type="checkbox" id="not-d-v"> Не дано
+        <button id="speed_del">Очистить</button><br>
+
+        Ускорение a <input type="text" id="ac"> (В СИ - м/с²) <input type="checkbox" id="not-d-a"> Не дано
+        <button id="ac_del">Очистить</button><br>
+
+        Время t <input type="text" id="time">
+        <select id="time-izm">
+            <option value="d">день(дня, дней)</option>
+            <option value="h">час(а, ов)</option>
+            <option value="m">минут(а, ы)</option>
+            <option value="s" autofocus>секунд(а, ы) (с)</option>
+        </select> (В СИ - с) <button id="time_del">Очистить</button><br>
+
+        <input type="checkbox" id="not-ss"> Без начальной скорости (V₀ = 0)
+        <input type="checkbox" id="not-fs"> Без конечной скорости (V = 0)
+
+        <select id="moving-type">
+            <option value="rm">Равномерно</option>
+            <option value="ry">Равноускоренно</option>
+            <option value="rz">Равнозамедленно</option>
+        </select>
+        <input type="checkbox" id="not-d-a"> Вывод в СИ
+        <button id="results">Посчитать</button>
+    </div>
+    <script>
+        var time_map = new Map([
+            ["d", 86400],
+            ["h", 3600],
+            ["m", 60],
+            ["s", 1]
+        ])
+        var moving_map = new Map([
+            ["km", 1000],
+            ["m", 1],
+            ["sm", 0.01],
+            ["mm", 0.001]
+        ])
+        results.onclick = function(){
+            var moving_v = document.getElementById("moving").value;
+            var time_v = document.getElementById("time").value;
+            var ac_v = document.getElementById("ac").value;
+            var speed_v = document.getElementById("speed").value;
+            var speed0_v = document.getElementById("speed0").value;
+
+            var moving = document.getElementById("moving");
+            var moving_type = document.getElementById("moving-type").value;
+            var time = document.getElementById("time");
+            var ac = document.getElementById("ac");
+            var speed = document.getElementById("speed");
+            var speed0 = document.getElementById("speed0");
+
+            if (not-ss.checked) {
+                speed0_v = 0;
+            }
+            if (not-fs.checked) {
+                speed_v = 0;
+            }
+            if (moving-type == "rm") {
+                ac_v = 0;
+            }
+            if (moving-type == "rz") {
+                ac_v = ac_v * (-1);
+            }
+
+            if (moving_v == "") {
+                var t = 1;
+            }
+            else if (time_v == "") {
+                var t = 2;
+            }
+            else if (ac_v == "") {
+                var t = 3;
+            }
+            else if (speed_v == "") {
+                var t = 4;
+            }
+            else if (speed0_v == "") {
+                var t = 5;
+            }
+            var time_izm = document.getElementById("time-izm").value;
+            var moving_izm = document.getElementById("moving-izm").value;
+            var si = document.getElementById("si");
+            console.log();
+            if (si.checked) {
+                if (t == 1) {
+                    mass_v = mass_v * mass_map.get(mass_izm);
+                    volume_v = volume_v * volume_map.get(volume_izm);
+                    document.getElementById("density").value = mass_v / volume_v;
+                }
+                if (t == 2) {
+                    volume_v = volume_v * volume_map.get(volume_izm);
+                    density_v = density_v * mass_map.get(mass_izm);
+                    document.getElementById("mass").value = volume_v * density_v;
+                }
+                if (t == 3) {
+                    mass_v = mass_v * mass_map.get(mass_izm);
+                    density_v = density_v / volume_map.get(volume_izm);
+                    document.getElementById("volume").value = mass_v / density_v;
+                }
+            }
+            else {
+                if (t == 1) {
+                    document.getElementById("density").value = mass_v / volume_v;
+                }
+                if (t == 2) {
+                    document.getElementById("mass").value = density_v * volume_v;
+                }
+                if (t == 3) {
+                    document.getElementById("volume").value = mass_v / density_v;
+                }
+            }
+            
+        }
+    </script>
+    <script>
+        density_del.onclick = function() {
+            document.getElementById("density").value = "";
+        }
+        mass_del.onclick = function() {
+            document.getElementById("mass").value = "";
+        }
+        volume_del.onclick = function() {
+            document.getElementById("volume").value = "";
+        }
+    </script>
+</body>
+</html>

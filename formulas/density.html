@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Phyrmularics - формулы тут</title>
+    <script src="scripts/density.js"></script>
+</head>
+<body>
+    <div id="menu">
+        <button id="main-butt">Главная</button>
+        <button id="list-butt">Список формул и законов</button>
+        <button id="about-butt">О сайте</button>
+    </div>
+    <div id="main">
+        Плотность ρ <input type="text" id="density"> (В СИ - кг/м³) <input type="checkbox" id="si"> Вывод плотности в СИ<button id="density_del">Очистить</button><br>
+        Масса m <input type="text" id="mass">
+        <select id="mass-izm">
+            <option value="tn">тонн(а, ы) (т)</option>
+            <option value="cnt">центнер(a, ов) (ц)</option>
+            <option value="kg" autofocus="true">килограмм(а, ов) (кг)</option>
+            <option value="g">грамм(а, ов) (г)</option>
+            <option value="mg">миллиграмм(а, ов) (мг)</option>
+        </select> (В СИ - кг) <button id="mass_del">Очистить</button><br>
+        Объём V <input type="text" id="volume">
+        <select id="volume-izm">
+            <option value="m3" autofocus>метр(а, ов) в кубе (м³)</option>
+            <option value="dm3">дециметр(а, ов) в кубе (дм³)</option>
+            <option value="l">литр(а, ов) (л)</option>
+            <option value="sm3">сантиметр(а, ов) в кубе (см³)</option>
+            <option value="ml">миллилитр(а, ов) (мл)</option>
+            <option value="mm3">миллиметр(а, ов) в кубе (мм³)</option>
+        </select> (В СИ - м³) <button id="volume_del">Очистить</button><br>
+        
+        <button id="results">Посчитать</button>
+        
+    </div>
+</body>
+</html>
